@@ -21,13 +21,6 @@ function App() {
     fetchList();
   }, []);
 
-  // const [currentTodo, setCurrentTodo] = useState({
-  //   completed: false,
-  //   details: "",
-  //   name: "",
-  //   size: 2,
-  // });
-
   return (
     <div className="App">
       <LoginPage />
@@ -49,10 +42,8 @@ function App() {
 
       <h1>To Do</h1>
       <AddTaskPage
-      // setCurrentTodo={setCurrentTodo}
-      // setTodoList={setTodoList}
-      // currentTodo={currentTodo}
-      // todoList={todoList}
+        setNotStartedList={setNotStartedList}
+        notStartedList={notStartedList}
       />
       <div className="flexContainer">
         {notStartedList && (

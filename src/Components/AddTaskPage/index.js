@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import Input from "../Input";
 
-function AddTaskPage() {
+function AddTaskPage({ setNotStartedList, notStartedList }) {
   const newTaskExample = {
     name: "Add something to db",
     description: "post request",
@@ -101,6 +101,7 @@ function AddTaskPage() {
         onClick={() => {
           console.log(task);
           postTask(task);
+          setNotStartedList([...notStartedList, task]);
         }}
       >
         Submit
