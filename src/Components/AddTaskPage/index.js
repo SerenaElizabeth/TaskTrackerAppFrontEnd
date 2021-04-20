@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useReducer } from "react";
+import Input from "../Input";
 
 function AddTaskPage() {
   const newTaskExample = {
     name: "Add something to db",
     description: "post request",
     size: 3,
-    deadline: "2021-04-25T00:00:00",
-    status: "Not started",
+    deadline: "2021-04-29T00:00:00",
+    status: "not started",
   };
+
+  const [task, dispatch] = useReducer(reducer, newTaskExample);
+
+  //reducer function to assign values to the task object to be posted to the database
+
+  function reducer(task, action) {
+    switch (action.type) {
+      case "SET_NAME":
+        return { ...task, name: action.payload };
+      case "SET_DESCRIPTION":
+        return { ...task, description: action.payload };
+      case "SET_SIZE":
+        return { ...task, size: action.payload };
+      case "SET_DEADLINE":
+        return { ...task, deadline: action.payload };
+      default:
+        return task;
+    }
+  }
 
   async function postTask(newTaskObject) {
     console.log(newTaskObject);
@@ -21,6 +41,30 @@ function AddTaskPage() {
 
   return (
     <div>
+      <Input
+        placeholder="Add Name"
+        type="text"
+        onChange={(e) => {
+          dispatch({ type: "SET_NAME", payload: e.target.value });
+        }}
+      />
+      <Input
+        placeholder="Add Description"
+        type="text"
+        onChange={(e) => {
+          dispatch({ type: "SET_DESCRIPTION", payload: e.target.value });
+        }}
+      />
+      <Input
+        type="date"
+        onChange={(e) => {
+          console.log(e.target.value);
+          dispatch({ type: "SET_DEADLINE", payload: e.target.value });
+        }}
+      />
+      {/* <SizePicker />
+      <DatePicker /> */}
+
       {/* <input
         placeholder="add new todo"
         type="text"
@@ -54,7 +98,10 @@ function AddTaskPage() {
         //   setTodoList([...todoList, currentTodo]);
         // }}
 
-        onClick={() => postTask(newTaskExample)}
+        onClick={() => {
+          console.log(task);
+          postTask(task);
+        }}
       >
         Submit
       </button>

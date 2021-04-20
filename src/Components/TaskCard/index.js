@@ -7,9 +7,9 @@ function TaskCard(props) {
     <div className="taskCard">
       <ul>
         <li>Name: {props.name}</li>
-        <li>Details: {props.details}</li>
+        <li>Details: {props.description}</li>
         <li>Size: {props.size}</li>
-        <li>Deadline: {props.deadline}</li>
+        <li>Deadline: {props.deadline.slice(0, 10)}</li>
         <li>Status: {props.status}</li>
       </ul>
       <FaTimes

@@ -10,12 +10,21 @@ export default function ToDoList({ todos, setList, text }) {
     setList([...todos.slice(0, index), ...todos.slice(index + 1)]);
   }
 
+  //use dragula
+
   return (
     <div className="flexChild">
       <h1>{text}</h1>
-      {todos.map((todo, index) => (
-        <TaskCard deleteItem={deleteItem} {...todo} index={index} key={index} />
-      ))}
+      {todos.length > 0
+        ? todos.map((todo, index) => (
+            <TaskCard
+              deleteItem={deleteItem}
+              {...todo}
+              index={index}
+              key={index}
+            />
+          ))
+        : "no tasks"}
     </div>
   );
 }
