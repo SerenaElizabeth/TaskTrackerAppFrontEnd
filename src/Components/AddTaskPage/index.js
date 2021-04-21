@@ -1,10 +1,11 @@
 import React, { useReducer } from "react";
 import Input from "../Input";
+import Button from "../Button";
 
-function AddTaskPage({ setNotStartedList, notStartedList }) {
+function AddTaskPage({ setNotStartedList, notStartedList, setAddItem }) {
   const newTaskExample = {
-    name: "Add something to db",
-    description: "post request",
+    name: "",
+    description: "",
     size: 3,
     deadline: "2021-04-29T00:00:00",
     status: "not started",
@@ -40,7 +41,7 @@ function AddTaskPage({ setNotStartedList, notStartedList }) {
   }
 
   return (
-    <div>
+    <div className="addtask">
       <Input
         placeholder="Add Name"
         type="text"
@@ -93,7 +94,8 @@ function AddTaskPage({ setNotStartedList, notStartedList }) {
           setCurrentTodo({ ...currentTodo, deadline: e.target.value })
         }
       ></input> */}
-      <button
+      <Button
+        text="Submit"
         // onClick={() => {
         //   setTodoList([...todoList, currentTodo]);
         // }}
@@ -102,10 +104,9 @@ function AddTaskPage({ setNotStartedList, notStartedList }) {
           console.log(task);
           postTask(task);
           setNotStartedList([...notStartedList, task]);
+          setAddItem(false);
         }}
-      >
-        Submit
-      </button>
+      ></Button>
     </div>
   );
 }

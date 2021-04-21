@@ -3,12 +3,14 @@ import ToDoList from "../ToDoList";
 import React, { useState, useEffect } from "react";
 import AddTaskPage from "../AddTaskPage";
 // import { useAuth0 } from "@auth0/auth0-react";
+import Button from "../Button";
 import LoginPage from "../LoginPage";
 
 function App() {
   const [notStartedList, setNotStartedList] = useState(null);
   const [inProgressList, setInProgessList] = useState(null);
   const [completedList, setCompletedList] = useState(null);
+  const [addItem, setAddItem] = useState(false);
 
   useEffect(() => {
     async function fetchList() {
@@ -23,28 +25,21 @@ function App() {
 
   return (
     <div className="App">
-      <LoginPage />
-      {/* <Router>
-        <Switch>
-          <Route path="/CreateEvent">
-            <CreateEvent />
-          </Route>
-          <Route path="/GroupFeed">
-            <GroupFeed />
-          </Route>
-          <Route path="/">
-            {isAuthenticated ? <ProfilePage /> : <LoginPage />}
-          </Route>
-        </Switch>
+      <Button text="Log Out"></Button>
 
-        {isAuthenticated && <NavBar />}
-      </Router> */}
-
-      <h1>To Do</h1>
-      <AddTaskPage
-        setNotStartedList={setNotStartedList}
-        notStartedList={notStartedList}
-      />
+      <h1>Task Manager</h1>
+      <div className="TaskDiv">
+        {!addItem && (
+          <Button text="Add Task" onClick={() => setAddItem(!addItem)} />
+        )}
+        {addItem && (
+          <AddTaskPage
+            setNotStartedList={setNotStartedList}
+            notStartedList={notStartedList}
+            setAddItem={setAddItem}
+          />
+        )}
+      </div>
       <div className="flexContainer">
         {notStartedList && (
           <ToDoList

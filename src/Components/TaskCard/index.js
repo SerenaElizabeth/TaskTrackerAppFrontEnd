@@ -6,11 +6,9 @@ function TaskCard(props) {
   return (
     <div className="taskCard">
       <ul>
-        <li>Name: {props.name}</li>
-        <li>Details: {props.description}</li>
-        <li>Size: {props.size}</li>
-        <li>Deadline: {props.deadline.slice(0, 10)}</li>
-        <li>Status: {props.status}</li>
+        <li>{props.name}</li>
+        <li>{props.description}</li>
+        <li>Complete by: {props.deadline.slice(0, 10)}</li>
       </ul>
       <FaTimes
         onClick={() => props.deleteItem(props.id, props.index)}
