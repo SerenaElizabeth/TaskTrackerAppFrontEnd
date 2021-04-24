@@ -10,6 +10,12 @@ body {
   margin-top: 20px;
 }
 
+@media only screen and (max-width: 1000px) {
+  .App {
+    width: 95%;
+  }
+}
+
 .parentListContainer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -22,7 +28,7 @@ body {
 
 @media only screen and (max-width: 800px) {
   .parentListContainer {
-    width: 95%;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -40,6 +46,15 @@ h1 {
   background-color: white;
   border-radius: 0.5em;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  min-height: 100px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 800px) {
+  .taskCard {
+    min-height: 60px;
+  }
 }
 
 li {
@@ -75,16 +90,6 @@ li {
     display: block;
     margin: 0.4em auto;
   }
-}
-
-.addtask {
-  display: flex;
-  justify-content: center;
-}
-
-.TaskDiv {
-  display: flex;
-  justify-content: center;
 }
 
 .icons {

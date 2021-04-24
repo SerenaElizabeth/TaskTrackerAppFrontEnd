@@ -8,15 +8,13 @@ function TaskCard(props) {
       <div className="icons">
         <FaTimes
           onClick={() => props.deleteItem(props.id, props.index)}
-          style={{ color: "red" }}
+          style={{ color: "rgb(59, 59, 59)" }}
         />
-        <FaEdit />
+        {/* <FaEdit /> */}
       </div>
-      <ul>
-        <li>{props.name}</li>
-        {props.description && <li>{props.description}</li>}
-        {props.deadline && <li>Deadline: {props.deadline.slice(0, 10)}</li>}
-      </ul>
+      <li>{props.name}</li>
+      {props.description && <li>{props.description}</li>}
+      {props.deadline && <li>Deadline: {props.deadline.slice(0, 10)}</li>}
     </div>
   );
 }

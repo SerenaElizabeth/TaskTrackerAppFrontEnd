@@ -10,21 +10,21 @@ export default function ToDoList({ todos, setList, text }) {
     setList([...todos.slice(0, index), ...todos.slice(index + 1)]);
   }
 
-  //use dragula
-
   return (
     <div className="gridItemListBox">
       <h1>{text}</h1>
-      {todos.length > 0
-        ? todos.map((todo, index) => (
-            <TaskCard
-              deleteItem={deleteItem}
-              {...todo}
-              index={index}
-              key={index}
-            />
-          ))
-        : "no tasks"}
+      {todos.length > 0 ? (
+        todos.map((todo, index) => (
+          <TaskCard
+            deleteItem={deleteItem}
+            {...todo}
+            index={index}
+            key={index}
+          />
+        ))
+      ) : (
+        <div className="taskCard">No tasks to display</div>
+      )}
     </div>
   );
 }
