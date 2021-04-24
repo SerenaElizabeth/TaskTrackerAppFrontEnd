@@ -1,9 +1,10 @@
 import React from "react";
 
-function Input({ placeholder, type, onChange }) {
+function Input({ text, type, onChange }) {
   return (
     <div>
-      <input placeholder={placeholder} type={type} onChange={onChange}></input>
+      <label>{text}</label>
+      <input type={type} onChange={onChange}></input>
     </div>
   );
 }

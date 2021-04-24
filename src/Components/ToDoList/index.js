@@ -13,7 +13,7 @@ export default function ToDoList({ todos, setList, text }) {
   //use dragula
 
   return (
-    <div className="flexChild">
+    <div className="gridItemListBox">
       <h1>{text}</h1>
       {todos.length > 0
         ? todos.map((todo, index) => (

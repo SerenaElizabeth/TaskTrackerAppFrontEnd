@@ -5,16 +5,18 @@ function TaskCard(props) {
   console.log(props.id);
   return (
     <div className="taskCard">
+      <div className="icons">
+        <FaTimes
+          onClick={() => props.deleteItem(props.id, props.index)}
+          style={{ color: "red" }}
+        />
+        <FaEdit />
+      </div>
       <ul>
         <li>{props.name}</li>
-        <li>{props.description}</li>
-        <li>Complete by: {props.deadline.slice(0, 10)}</li>
+        {props.description && <li>{props.description}</li>}
+        {props.deadline && <li>Deadline: {props.deadline.slice(0, 10)}</li>}
       </ul>
-      <FaTimes
-        onClick={() => props.deleteItem(props.id, props.index)}
-        style={{ color: "red" }}
-      />
-      <FaEdit />
     </div>
   );
 }

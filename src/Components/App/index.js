@@ -40,24 +40,24 @@ function App() {
           />
         )}
       </div>
-      <div className="flexContainer">
+      <div className="parentListContainer">
         {notStartedList && (
           <ToDoList
-            text="not started"
+            text="To Do"
             setList={setNotStartedList}
             todos={notStartedList}
           />
         )}
         {inProgressList && (
           <ToDoList
-            text="in prog"
+            text="In Progress"
             setList={setInProgessList}
             todos={inProgressList}
           />
         )}
         {completedList && (
           <ToDoList
-            text="completed"
+            text="Completed"
             setList={setCompletedList}
             todos={completedList}
           />

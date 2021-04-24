@@ -4,10 +4,10 @@ import Button from "../Button";
 
 function AddTaskPage({ setNotStartedList, notStartedList, setAddItem }) {
   const newTaskExample = {
-    name: "",
-    description: "",
+    name: null,
+    description: null,
     size: 3,
-    deadline: "2021-04-29T00:00:00",
+    deadline: null,
     status: "not started",
   };
 
@@ -40,74 +40,49 @@ function AddTaskPage({ setNotStartedList, notStartedList, setAddItem }) {
     //setList([...todos.slice(0, index), ...todos.slice(index + 1)]);
   }
 
+  function onSubmit(e) {
+    e.preventDefault();
+    console.log(task);
+    if (!task.name) {
+      alert("Please enter a task");
+      return;
+    }
+    postTask(task);
+    setNotStartedList([...notStartedList, task]);
+    setAddItem(false);
+  }
+
   return (
-    <div className="addtask">
-      <Input
-        placeholder="Add Name"
-        type="text"
-        onChange={(e) => {
-          dispatch({ type: "SET_NAME", payload: e.target.value });
-        }}
-      />
-      <Input
-        placeholder="Add Description"
-        type="text"
-        onChange={(e) => {
-          dispatch({ type: "SET_DESCRIPTION", payload: e.target.value });
-        }}
-      />
-      <Input
-        type="date"
-        onChange={(e) => {
-          console.log(e.target.value);
-          dispatch({ type: "SET_DEADLINE", payload: e.target.value });
-        }}
-      />
-      {/* <SizePicker />
-      <DatePicker /> */}
+    <form className="taskForm" onSubmit={onSubmit}>
+      <div className="addtask">
+        <Input
+          text="Task"
+          type="text"
+          onChange={(e) => {
+            dispatch({ type: "SET_NAME", payload: e.target.value });
+          }}
+        />
+        <Input
+          text="Details"
+          type="text"
+          onChange={(e) => {
+            dispatch({ type: "SET_DESCRIPTION", payload: e.target.value });
+          }}
+        />
 
-      {/* <input
-        placeholder="add new todo"
-        type="text"
-        onChange={(e) =>
-          setCurrentTodo({ ...currentTodo, name: e.target.value })
-        }
-      ></input>
-      <input
-        placeholder="add details"
-        type="text"
-        onChange={(e) =>
-          setCurrentTodo({ ...currentTodo, details: e.target.value })
-        }
-      ></input>
-      <input
-        placeholder="add size"
-        type="text"
-        onChange={(e) =>
-          setCurrentTodo({ ...currentTodo, size: e.target.value })
-        }
-      ></input>
-      <input
-        placeholder="add deadline"
-        type="text"
-        onChange={(e) =>
-          setCurrentTodo({ ...currentTodo, deadline: e.target.value })
-        }
-      ></input> */}
-      <Button
-        text="Submit"
-        // onClick={() => {
-        //   setTodoList([...todoList, currentTodo]);
-        // }}
+        <Input
+          type="date"
+          text="Deadline"
+          onChange={(e) => {
+            console.log(e.target.value);
+            dispatch({ type: "SET_DEADLINE", payload: e.target.value });
+          }}
+        />
 
-        onClick={() => {
-          console.log(task);
-          postTask(task);
-          setNotStartedList([...notStartedList, task]);
-          setAddItem(false);
-        }}
-      ></Button>
-    </div>
+        <input type="submit" value="Save" className="submitButton"></input>
+        <Button text="Cancel" onClick={() => setAddItem(false)} />
+      </div>
+    </form>
   );
 }
 
