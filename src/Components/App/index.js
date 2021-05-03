@@ -1,5 +1,5 @@
 import "./App.css";
-import ToDoList from "../ToDoList";
+import ListBoard from "../ListBoard";
 import React, { useState, useEffect } from "react";
 import AddTaskPage from "../AddTaskPage";
 // import { useAuth0 } from "@auth0/auth0-react";
@@ -25,38 +25,42 @@ function App() {
 
   return (
     <div className="App">
-      <Button text="Log Out"></Button>
-
-      <h1>Task Manager</h1>
-      <div className="TaskDiv">
+      <div className="header">
+        <h1>Task Manager</h1>
+        <Button className="headerButton1" text="Log Out"></Button>
         {!addItem && (
-          <Button text="Add Task" onClick={() => setAddItem(!addItem)} />
-        )}
-        {addItem && (
-          <AddTaskPage
-            setNotStartedList={setNotStartedList}
-            notStartedList={notStartedList}
-            setAddItem={setAddItem}
+          <Button
+            className="headerButton2"
+            text="Add Task"
+            onClick={() => setAddItem(!addItem)}
           />
         )}
       </div>
+      {addItem && (
+        <AddTaskPage
+          setNotStartedList={setNotStartedList}
+          notStartedList={notStartedList}
+          setAddItem={setAddItem}
+        />
+      )}
+
       <div className="parentListContainer">
         {notStartedList && (
-          <ToDoList
+          <ListBoard
             text="To Do"
             setList={setNotStartedList}
             todos={notStartedList}
           />
         )}
         {inProgressList && (
-          <ToDoList
+          <ListBoard
             text="In Progress"
             setList={setInProgessList}
             todos={inProgressList}
           />
         )}
         {completedList && (
-          <ToDoList
+          <ListBoard
             text="Completed"
             setList={setCompletedList}
             todos={completedList}

@@ -16,6 +16,12 @@ body {
   }
 }
 
+@media only screen and (max-width: 480px) {
+  h1 {
+    font-size: 28px;
+  }
+}
+
 .parentListContainer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -35,11 +41,9 @@ body {
 .gridItemListBox {
   border-radius: 0.5em;
   background-color: rgba(232, 244, 248, 0.514);
-  padding: 20px;
-}
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
-h1 {
-  text-align: left;
+  padding: 20px;
 }
 
 .taskCard {
@@ -63,11 +67,14 @@ li {
 
 .button,
 .submitButton {
-  background: none;
+  background: white;
+  width: 100px;
+  border: none;
   display: inline-block;
   padding: 0.35em 1.2em;
-  border: 0.1em solid rgb(59, 59, 59);
   margin: 0 0.3em 0.3em 0;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
   border-radius: 0.5em;
   box-sizing: border-box;
   text-decoration: none;
@@ -98,4 +105,27 @@ li {
 
 input {
   margin: 5px;
+}
+
+.header {
+  display: grid;
+  justify-items: stretch;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "header button1"
+    "header button2";
+  background-color: rgba(232, 244, 248, 0.514);
+  margin: 20px 0;
+  padding: 10px 15px;
+  border-radius: 0.5em;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+h1 {
+  grid-area: header;
+}
+
+.buttonDiv {
+  place-self: end;
 }

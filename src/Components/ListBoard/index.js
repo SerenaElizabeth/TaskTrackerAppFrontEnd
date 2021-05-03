@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TaskCard from "../TaskCard";
 
-export default function ToDoList({ todos, setList, text }) {
+export default function ListBoard({ todos, setList, text }) {
   async function deleteItem(id, index) {
     console.log(id);
     await fetch(`${process.env.REACT_APP_BACKEND_URL}${id}`, {
